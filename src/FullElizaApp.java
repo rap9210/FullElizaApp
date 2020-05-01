@@ -39,11 +39,16 @@ public class FullElizaApp {
         System.out.println("Welcome to ElizaChats, the #1 Yelp reviewed online therapist.\nNow, how can I help you today?");
         System.out.println("Enter response here or 'Q' to quit:");
         String userResponse = scn.nextLine();
+        //wordReplace() takes the userResponse (user scanner input), splits it, and checks it for instances of 'I', 'me', 'am', and 'my'
+        //and replaces them with 'you', 'you', 'are', and 'your' respectively. Then returns the new string to be displayed.
         userResponseRep = wordReplace(userResponse);
         while ((!userResponse.equalsIgnoreCase("Q")) && (!userResponse.equalsIgnoreCase("I am feeling great")) && (questionCounter<5)) {
+            //responseRandomizer() takes what the new string returned from wordReplace() and a Random class to select a random
+            //response every time the user enters something new.
             System.out.println(responseRandomizer(userResponseRep, r));
             userResponse = scn.nextLine();
             userResponseRep = wordReplace(userResponse);
+            //questionCounter just caps the number of iterations to 5 and displays a funny message if an actual therapist said it.
             questionCounter++;
             if (questionCounter == 5){
                 System.out.println("*YAWN* It's getting late, and honestly I'm a little bored. I'll show you out the door.");
